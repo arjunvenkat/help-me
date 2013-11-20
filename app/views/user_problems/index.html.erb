@@ -1,0 +1,29 @@
+<h1>Listing user_problems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Problem</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_problems.each do |user_problem| %>
+      <tr>
+        <td><%= user_problem.user_id %></td>
+        <td><%= user_problem.problem_id %></td>
+        <td><%= link_to 'Show', user_problem %></td>
+        <td><%= link_to 'Edit', edit_user_problem_path(user_problem) %></td>
+        <td><%= link_to 'Destroy', user_problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User problem', new_user_problem_path %>

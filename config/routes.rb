@@ -1,4 +1,9 @@
 HelpMe::Application.routes.draw do
+  resources :user_problems
+
+  get "login" => "sessions#new"
+  post "sessions/create" => "sessions#create"
+  get "logout" => "sessions#destroy"
   resources :users
 
   resources :problems
@@ -43,7 +48,7 @@ HelpMe::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <ul>
+      <% if session[:first_user_id] %>
+        <% @first_user = User.find_by_id(session[:first_user_id]) %>
+        <li><%= @first_user.name %> logged in</li>
+        <% if session[:second_user_id] %>
+          <% @second_user = User.find_by_id(session[:second_user_id]) %>
+          <li><%= @second_user.name %> logged in</li>
+        <% else %>
+          <li><%= link_to "login a partner", "/login"  %></li>
+        <% end %>
+        <li><%= link_to "logout", "/logout"  %></li>
+      <% else %>
+        <li><%= link_to "login", "/login" %></li>
+      <% end %>
+    </ul>
+  </nav>
 
 <%= yield %>
 

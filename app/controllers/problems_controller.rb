@@ -25,9 +25,16 @@ class ProblemsController < ApplicationController
   # POST /problems.json
   def create
     @problem = Problem.new(problem_params)
-
     respond_to do |format|
       if @problem.save
+        up1 = UserProblem.new
+        up1.user_id = session[:first_user_id].to_i
+        up1.problem_id = @problem.id
+        up1.save
+        up2 = UserProblem.new
+        up2.user_id = session[:second_user_id].to_i
+        up2.problem_id = @problem.id
+        up2.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
         format.json { render action: 'show', status: :created, location: @problem }
       else

@@ -5,5 +5,13 @@
   <%= @problem.description %>
 </p>
 
+<p>Student pair:</p>
+
+<ul>
+  <% @problem.users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Back', problems_path %>
